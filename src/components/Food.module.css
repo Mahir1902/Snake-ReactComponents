@@ -1,0 +1,8 @@
+.food {
+    position: absolute;
+    width: 2%;
+    height: 2%;
+    background-image: url("https://playsnake.org/assets/images/food.svg");
+    background-size: contain;
+    z-index: 1;
+}
