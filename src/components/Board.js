@@ -167,16 +167,16 @@ import Snake from "./Snake";
 const getRandomCoordinate = () => {
   let min = 1;
   let max = 98;
-  let x = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
-  let y = Math.floor((Math.random() * (max - min + 1) + min) / 2) * 2;
+  let x = Math.floor((Math.random() * (max - min + 1) + min) / 4) * 4;
+  let y = Math.floor((Math.random() * (max - min + 1) + min) / 4) * 4;
   return [x, y];
 };
 
 const initialState = {
   snakeBody: [
     [0, 0],
-    [2, 0],
     [4, 0],
+    [8, 0],
   ],
   foodPos: getRandomCoordinate(),
   direction: "RIGHT",
@@ -196,16 +196,16 @@ const Board = ({score, setScore}) => {
 
     switch (gameState.direction) {
       case "RIGHT":
-        head = [head[0] + 2, head[1]];
+        head = [head[0] + 4, head[1]];
         break;
       case "LEFT":
-        head = [head[0] - 2, head[1]];
+        head = [head[0] - 4, head[1]];
         break;
       case "UP":
-        head = [head[0], head[1] - 2];
+        head = [head[0], head[1] - 4];
         break;
       case "DOWN":
-        head = [head[0], head[1] + 2];
+        head = [head[0], head[1] + 4];
         break;
       default:
     }
@@ -235,6 +235,7 @@ const Board = ({score, setScore}) => {
     };
 
     if (checkIfOutOfBounds() || checkIfCollasped()) {
+      setScore(0)
       return gameOver();
     }
 
